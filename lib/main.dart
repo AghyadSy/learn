@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:learn/Services/services.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:learn/core/localzation/changelocal.dart';
 import 'package:learn/core/localzation/translation.dart';
 import 'package:learn/routs.dart';
@@ -10,7 +10,7 @@ import 'package:learn/view/screen/Language.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized;
-  await initialServices();
+  await GetStorage.init();
 
   (const MyApp());
 }

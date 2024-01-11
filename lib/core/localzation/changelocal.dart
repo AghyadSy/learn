@@ -8,7 +8,7 @@ class LocalController extends GetxController {
 
   void changeLanguage(String codeLang) {
     Locale locale = Locale(codeLang);
-    appServices.sharedPreferences.setString("lanq", codeLang);
+    appServices.getStorage.write("lanq", codeLang);
     Get.updateLocale(locale);
   }
 
@@ -16,12 +16,12 @@ class LocalController extends GetxController {
   void onInit() {
     super.onInit();
 
-    String? pref = appServices.sharedPreferences.getString("lanq");
+    String? store = appServices.getStorage.read("lanq"); // corrected
 
-    if (pref != null) {
-      if (pref == "ar") {
+    if (store != null) {
+      if (store == "ar") {
         language = const Locale("ar");
-      } else if (pref == "en") {
+      } else if (store == "en") {
         language = const Locale("en");
       } else {
         language = Locale(Get.deviceLocale!.languageCode);
@@ -29,4 +29,3 @@ class LocalController extends GetxController {
     }
   }
 }
-// Don't forget to injection in main **

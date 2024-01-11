@@ -1,14 +1,11 @@
 import 'package:get/get.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:get_storage/get_storage.dart';
 
 class AppServices extends GetxService {
-  late SharedPreferences sharedPreferences;
+  late GetStorage getStorage;
+
   Future<AppServices> init() async {
-    sharedPreferences = await SharedPreferences.getInstance();
+    getStorage = (await GetStorage.init()) as GetStorage;
     return this;
   }
-}
-
-initialServices() async {
-  await Get.putAsync(() => AppServices().init());
 }
